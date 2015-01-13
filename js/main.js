@@ -12,11 +12,10 @@ function init()
 
     stage = new Stage(canvas);
 
-    ball = new Shape();
-    ball.graphics.beginFill("red").drawCircle(0, 0, 10);
-    ball.x = 630;
-    ball.y = 470;
-
+    ball = new Ball(10);
+    ball.x = canvas.width / 2;
+    ball.y = canvas.height / 2;
+    
     restart();
 }
 
@@ -35,5 +34,6 @@ function restart()
 
 function tick(event)
 {
+    ball.tick(event);
     stage.update(event);
 }
