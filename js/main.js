@@ -1,10 +1,15 @@
 var stage;
 var canvas;
 var ball;
+var palette;
+var input;
 
 function init()
 {
     console.log("Init");
+
+    document.onkeydown = handleKeyDown;
+    document.onkeyup = handleKeyUp;
 
     canvas = document.getElementById("main_canvas");
     canvas.width = SCREEN_WIDTH;
@@ -15,6 +20,11 @@ function init()
     ball = new Ball(10);
     ball.x = canvas.width / 2;
     ball.y = canvas.height / 2;
+
+    input = new Input();
+    palette = new Palette(10, 20, input);
+    palette.x = 10;
+    palette.y = 20;
     
     restart();
 }
@@ -26,6 +36,10 @@ function restart()
     stage.removeAllChildren();
     stage.clear();
     stage.addChild(ball);
+    stage.addChild(palette);
+
+    input.reset();
+
     if( !Ticker.hasEventListener("tick") )
     {
         Ticker.addEventListener("tick", tick);
@@ -34,6 +48,15 @@ function restart()
 
 function tick(event)
 {
+    palette.tick(event);
     ball.tick(event);
     stage.update(event);
+}
+
+function handleKeyDown(event){
+    input.set_state(event)
+}
+
+function handleKeyUp(event){
+    input.reset_state(event)
 }
