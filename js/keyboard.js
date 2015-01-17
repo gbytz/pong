@@ -173,15 +173,15 @@
 // Public methods:
     var p = KeyboardHandler.prototype;
 
-    p.set_state = function(event)
+    p.setState = function(event)
     {
         var my_code = KeyboardHandler._keycodes_map[event.keyCode]
         this._keys_state[my_code] = (event.type !== "keyup");
     }
 
-    p.get_state = function(keyCode)
+    p.isPressed = function(key_constant)
     {
-        return this._keys_state[keyCode];
+        return this._keys_state[key_constant];
     }
 
     p.reset = function()
