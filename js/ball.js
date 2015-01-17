@@ -1,14 +1,15 @@
 (function(window)
 {
-    function Ball(size)
+    var Ball = function(size)
     {
         this.Shape_constructor();
         this.activate(size);
     }
     var p = extend(Ball, Shape);
 
-// Public properties:
+// Static properties:
 
+// Public properties:
     p.radius;
     p.vX;
     p.vY;
@@ -33,7 +34,7 @@
         this.graphics.clear();
         this.graphics.beginFill("red").drawCircle(0, 0, size);
     }
-    
+
     p._getDirection = function()
     {
         var angle = Math.random() * (Math.PI * 2);
@@ -42,4 +43,5 @@
     }
 
     window.Ball = promote(Ball, "Shape");
+
 }(window));
