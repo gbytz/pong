@@ -4,6 +4,7 @@
     {
         this._initialize();
     }
+    var p = KeyboardHandler.prototype;
 
 // Static properties:
     // Arrows
@@ -169,10 +170,7 @@
         19: KeyboardHandler.KEY_PAUSE
     };
 
-
 // Public methods:
-    var p = KeyboardHandler.prototype;
-
     p.setState = function(event)
     {
         var my_code = KeyboardHandler._keycodes_map[event.keyCode]
@@ -274,4 +272,5 @@
     }
 
     window.KeyboardHandler = KeyboardHandler;
+
 }(window));
